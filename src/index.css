@@ -1,0 +1,298 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Dark theme with glowing effects and floating particles */
+.dark-theme {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 25%, #16213e 50%, #0f0f1e 75%, #0a0a0a 100%);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Floating particles animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-30px) rotate(120deg); }
+  66% { transform: translateY(15px) rotate(240deg); }
+}
+
+@keyframes glow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+.floating-particle {
+  position: absolute;
+  background: radial-gradient(circle, rgba(147, 51, 234, 0.3) 0%, rgba(236, 72, 153, 0.2) 50%, transparent 70%);
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite, glow 3s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floating-particle:nth-child(1) { width: 80px; height: 80px; top: 10%; left: 10%; animation-delay: 0s; }
+.floating-particle:nth-child(2) { width: 60px; height: 60px; top: 20%; right: 20%; animation-delay: 1s; }
+.floating-particle:nth-child(3) { width: 100px; height: 100px; bottom: 30%; left: 15%; animation-delay: 2s; }
+.floating-particle:nth-child(4) { width: 40px; height: 40px; top: 60%; right: 10%; animation-delay: 3s; }
+.floating-particle:nth-child(5) { width: 70px; height: 70px; bottom: 15%; right: 30%; animation-delay: 4s; }
+
+/* Glowing card effects */
+/* .glow-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+} */
+.glow-card {
+  background: rgba(10, 10, 30, 0.4); /* ⬅️ MUCH DARKER */
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 8px rgba(138, 43, 226, 0.3); /* adds purple glow */
+  transition: all 0.3s ease;
+}
+/* .glow-card:hover {
+  box-shadow: 0 16px 48px rgba(147, 51, 234, 0.15), 0 0 0 1px rgba(147, 51, 234, 0.3);
+  transform: translateY(-2px);
+} */
+.glow-card:hover {
+  box-shadow:
+    0 16px 48px rgba(147, 51, 234, 0.25), /* deeper purple glow */
+    0 0 8px rgba(255, 255, 255, 0.1),     /* soft outer glow */
+    0 0 0 1px rgba(147, 51, 234, 0.3);    /* subtle border */
+  transform: translateY(-2px);
+  background: rgba(15, 15, 40, 0.5); /* slightly darken on hover */
+}
+/* Glowing buttons */
+.glow-button {
+  background: linear-gradient(135deg, #9333ea, #ec4899);
+  box-shadow: 0 4px 15px rgba(147, 51, 234, 0.4);
+  transition: all 0.3s ease;
+}
+
+.glow-button:hover {
+  box-shadow: 0 8px 25px rgba(147, 51, 234, 0.6);
+  transform: translateY(-2px);
+}
+
+/* Text glow effects */
+/* .text-glow {
+  text-shadow: 0 0 10px rgba(147, 51, 234, 0.5), 0 0 20px rgba(147, 51, 234, 0.3);
+} */
+
+.text-glow {
+  color: white;
+  text-shadow: 0 0 10px rgba(147, 51, 234, 0.5), 0 0 20px rgba(147, 51, 234, 0.3);
+}
+
+/* Animated gradient text */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.gradient-text {
+  background: linear-gradient(-45deg, #9333ea, #ec4899, #06b6d4, #8b5cf6);
+  background-size: 400% 400%;
+  animation: gradientShift 3s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Pulse animation for interactive elements */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Icon glow effect */
+.icon-glow {
+  filter: drop-shadow(0 0 8px rgba(147, 51, 234, 0.6));
+}
+
+/* Dark mode overrides */
+.dark-mode {
+  background: #0a0a0a;
+  color: #ffffff;
+}
+
+.dark-mode .bg-white {
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(20px);
+}
+
+.dark-mode .text-gray-900 {
+  color: #ffffff !important;
+}
+
+.dark-mode .text-gray-600 {
+  color: #a0a0a0 !important;
+}
+
+.dark-mode .text-gray-500 {
+  color: #808080 !important;
+}
+
+.dark-mode .border-gray-200 {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* High contrast text for better visibility */
+.text-bright {
+  color: #ffffff !important;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+.text-bright-secondary {
+  color: #e5e7eb !important;
+  text-shadow: 0 0 4px rgba(229, 231, 235, 0.2);
+}
+
+/* Fixed height for capsule cards to prevent layout shift */
+.capsule-card {
+  min-height: 320px;
+}
+
+/* Create new capsule card specific styling - COMPLETELY FIXED */
+.create-capsule-card {
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: none !important;
+  transition: none !important;
+}
+
+/* Override ALL transforms and transitions for create capsule card */
+.create-capsule-card,
+.create-capsule-card:hover,
+.create-capsule-card:focus,
+.create-capsule-card:active {
+  transform: none !important;
+  transition: none !important;
+}
+
+/* Override any hover transforms on create capsule card children */
+.create-capsule-card *,
+.create-capsule-card *:hover,
+.create-capsule-card *:focus,
+.create-capsule-card *:active {
+  transform: none !important;
+  transition: none !important;
+}
+
+/* Completely disable glow-card hover transform when inside create-capsule-card */
+.create-capsule-card.glow-card:hover {
+  transform: none !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Force static positioning for create capsule card */
+.create-capsule-card {
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+}
